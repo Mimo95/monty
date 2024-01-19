@@ -26,7 +26,7 @@ void valide_opcode(char *opcode, stack_t **stack, unsigned int line_number)
         {"sub",opcode_sub},
         {"div",opcode_div},
         {"mul",opcode_mul},
-        {"mul",opcode_mod},
+        {"mod",opcode_mod},
         {"pchar",opcode_pchar},
         {"pstr",opcode_pstr},
         {"rotl",opcode_rotl},

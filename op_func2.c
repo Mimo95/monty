@@ -27,14 +27,16 @@ size_t dlistint_len(stack_t *h)
 
 void opcode_swap(stack_t **stack, unsigned int line_number)
 {
-    struct  stack_s *first = *stack;
-    struct  stack_s *second = first->next;
+    struct  stack_s *first ;
+    struct  stack_s *second ;
     
     if (dlistint_len(*stack) < 2)
     {
-        dprintf(STDERR_FILENO,"L%u: can't swap, stack too short",line_number);
+        dprintf(STDERR_FILENO,"L%u: can't swap, stack too short\n",line_number);
         exit(EXIT_FAILURE);
     }
+    first = *stack;
+    second = first->next;
 
     first->next = second->next;
     first->prev = second;
@@ -54,14 +56,17 @@ void opcode_swap(stack_t **stack, unsigned int line_number)
 void opcode_add(stack_t **stack, unsigned int line_number)
 {
     int sum;
-    struct  stack_s *first = *stack;
-    struct  stack_s *second = first->next;
+    struct  stack_s *first ;
+    struct  stack_s *second ;
 
     if (dlistint_len(*stack) < 2)
     {
-        dprintf(STDERR_FILENO,"L%u: can't add, stack too short",line_number);
+        dprintf(STDERR_FILENO,"L%u: can't add, stack too short\n",line_number);
         exit(EXIT_FAILURE);
     }
+	first = *stack;
+	second = first->next;
+
     sum = first->n + second->n;
     second->n = sum;
 
@@ -81,6 +86,6 @@ void opcode_add(stack_t **stack, unsigned int line_number)
 
 void opcode_nop(stack_t **stack, unsigned int line_number)
 {
-    (void)stack;
+    	(void)stack;
 	(void)line_number;
 }

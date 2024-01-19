@@ -15,7 +15,7 @@ void opcode_push(stack_t **stack, unsigned int line_number)
     value = strtok (0, " \n");
     if (value == 0 || !isdigit(*value))
     {
-        dprintf(STDERR_FILENO,"L%u: usage: push integer",line_number);
+        dprintf(STDERR_FILENO,"L%u: usage: push integer\n",line_number);
         exit(EXIT_FAILURE);
     }
     n = atoi(value);
@@ -69,7 +69,7 @@ void opcode_pint(stack_t **stack, unsigned int line_number)
     stack_t *pTop = *stack;
     if (*stack == 0)
     {
-        dprintf(STDERR_FILENO,"L%u: can't pint, stack empty",line_number);
+        dprintf(STDERR_FILENO,"L%u: can't pint, stack empty\n",line_number);
         exit(EXIT_FAILURE);
     }
     printf("%d\n",pTop->n);
@@ -87,8 +87,8 @@ void opcode_pop(stack_t **stack, unsigned int line_number)
 
 	if (*stack == 0)
 	{
-		dprintf(STDERR_FILENO,"L%u: can't pop an empty stack",line_number);
-        exit(EXIT_FAILURE);
+		dprintf(STDERR_FILENO,"L%u: can't pop an empty stack\n",line_number);
+        	exit(EXIT_FAILURE);
 	}
 
 	pTemp = *stack;

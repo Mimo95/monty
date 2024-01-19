@@ -9,10 +9,18 @@
 void opcode_rotl(stack_t **stack, unsigned int line_number)
 {
 
-    struct stack_s *firstTop = *stack;
-    struct stack_s *secondTop = firstTop->next;
-    struct stack_s *last = *stack;
+    struct stack_s *firstTop ;
+    struct stack_s *secondTop ;
+    struct stack_s *last ;
     (void)line_number;
+
+    if (*stack == 0)
+    {
+	return;
+    }
+    firstTop = *stack;
+    secondTop = firstTop->next;
+    last = *stack;
 
     while (last->next != 0)
     {
@@ -34,9 +42,16 @@ void opcode_rotl(stack_t **stack, unsigned int line_number)
 
 void opcode_rotr(stack_t **stack, unsigned int line_number)
 {
-    struct stack_s *last = *stack;
-    struct stack_s *secondLast = 0;
+    struct stack_s *last ;
+    struct stack_s *secondLast;
     (void)line_number;
+
+    if (*stack == 0)
+    {
+	return;
+    }
+    last = *stack;
+    secondLast = 0;
 
     while (last->next != 0)
     {

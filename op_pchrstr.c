@@ -12,12 +12,12 @@ void opcode_pchar(stack_t **stack, unsigned int line_number)
 
     if (*stack == 0)
     {
-        dprintf(STDERR_FILENO,"L%u: can't pchar, stack empty",line_number);
+        dprintf(STDERR_FILENO,"L%u: can't pchar, stack empty\n",line_number);
         exit(EXIT_FAILURE);
     }
     if (top->n < 0 || top->n > 127)
     {
-        dprintf(STDERR_FILENO,"L%u: can't pchar, value out of range",line_number);
+        dprintf(STDERR_FILENO,"L%u: can't pchar, value out of range\n",line_number);
         exit(EXIT_FAILURE);
     }
 
@@ -46,6 +46,7 @@ void opcode_pstr(stack_t **stack, unsigned int line_number)
     if (*stack == 0)
     {
         printf("\n");
+	return;
     }
     while (move != 0 && move->n != 0 && move->n >= 0 && move->n <= 127)
     {

@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        dprintf(STDERR_FILENO,"USAGE: monty file");
+        dprintf(STDERR_FILENO,"USAGE: monty file\n");
         exit(EXIT_FAILURE);
     }
 return (0);

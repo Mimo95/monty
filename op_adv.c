@@ -8,14 +8,17 @@
 void opcode_sub(stack_t **stack, unsigned int line_number)
 {
     int sub;
-    struct  stack_s *first = *stack;
-    struct  stack_s *second = first->next;
+    struct  stack_s *first ;
+    struct  stack_s *second ;
 
     if (dlistint_len(*stack) < 2)
     {
-        dprintf(STDERR_FILENO,"L%u: can't sub, stack too short",line_number);
+        dprintf(STDERR_FILENO,"L%u: can't sub, stack too short\n",line_number);
         exit(EXIT_FAILURE);
     }
+    first = *stack;
+    second = first->next;
+
     sub = second->n - first->n;
     second->n = sub;
 
@@ -36,17 +39,20 @@ void opcode_sub(stack_t **stack, unsigned int line_number)
 void opcode_div(stack_t **stack, unsigned int line_number)
 {
     int div;
-    struct  stack_s *first = *stack;
-    struct  stack_s *second = first->next;
+    struct  stack_s *first ;
+    struct  stack_s *second ;
 
     if (dlistint_len(*stack) < 2)
     {
-        dprintf(STDERR_FILENO,"L%u: can't div, stack too short",line_number);
+        dprintf(STDERR_FILENO,"L%u: can't div, stack too short\n",line_number);
         exit(EXIT_FAILURE);
     }
+    first = *stack;
+    second = first->next;
+
     if (first->n == 0)
     {
-        dprintf(STDERR_FILENO,"L%u: division by zero",line_number);
+        dprintf(STDERR_FILENO,"L%u: division by zero\n",line_number);
         exit(EXIT_FAILURE);
     }
     div = second->n / first->n;
@@ -69,14 +75,17 @@ void opcode_div(stack_t **stack, unsigned int line_number)
 void opcode_mul(stack_t **stack, unsigned int line_number)
 {
     int mul;
-    struct  stack_s *first = *stack;
-    struct  stack_s *second = first->next;
+    struct  stack_s *first ;
+    struct  stack_s *second ;
 
     if (dlistint_len(*stack) < 2)
     {
-        dprintf(STDERR_FILENO,"L%u: can't mul, stack too short",line_number);
+        dprintf(STDERR_FILENO,"L%u: can't mul, stack too short\n",line_number);
         exit(EXIT_FAILURE);
     }
+    first = *stack;
+    second = first->next;
+
     mul = second->n * first->n;
     second->n = mul;
 
@@ -97,17 +106,20 @@ void opcode_mul(stack_t **stack, unsigned int line_number)
 void opcode_mod(stack_t **stack, unsigned int line_number)
 {
     int mod;
-    struct  stack_s *first = *stack;
-    struct  stack_s *second = first->next;
+    struct  stack_s *first ;
+    struct  stack_s *second ;
 
     if (dlistint_len(*stack) < 2)
     {
-        dprintf(STDERR_FILENO,"L%u: can't mod, stack too short",line_number);
+        dprintf(STDERR_FILENO,"L%u: can't mod, stack too short\n",line_number);
         exit(EXIT_FAILURE);
     }
+    first = *stack;
+    second = first->next;
+
     if (first->n == 0)
     {
-        dprintf(STDERR_FILENO,"L%u: division by zero",line_number);
+        dprintf(STDERR_FILENO,"L%u: division by zero\n",line_number);
         exit(EXIT_FAILURE);
     }
     mod = second->n % first->n;
